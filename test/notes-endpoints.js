@@ -53,32 +53,32 @@ describe.only('Notes Endpoints', function() {
           })
 
       })
-    //   context(`Given an XSS attack note`, () => {
-    //     const testFolders = makeFoldersArray();
-    //     const { maliciousNote, expectedNote} = makeMaliciousNote()
+      context(`Given an XSS attack note`, () => {
+        const testFolders = makeFoldersArray();
+        const { maliciousNote, expectedNote} = makeMaliciousNote()
   
-    //     beforeEach('insert malicious note', () => {
-    //       return db
-    //         .into('folder')
-    //         .insert(testFolders)
-    //         .then(() => {
-    //           return db
-    //             .into('note')
-    //             .insert([ maliciousNote ])
+        beforeEach('insert malicious note', () => {
+          return db
+            .into('folder')
+            .insert(testFolders)
+            .then(() => {
+              return db
+                .into('note')
+                .insert([ maliciousNote ])
            
-    //         }) 
-    //     })
+            }) 
+        })
   
-    //     it('removes XSS attack content', () => {
-    //       return supertest(app)
-    //         .get(`/api/notes`)
-    //         .expect(200)
-    //         .expect(res => {
-    //           expect(res.body[0].note_name).to.eql(expectedNote.note_name)
-    //           expect(res.body[0].note_content).to.eql(expectedNote.note_content)
-    //         })
-    //     })
-    //   })
+        it('removes XSS attack content', () => {
+          return supertest(app)
+            .get(`/api/notes`)
+            .expect(200)
+            .expect(res => {
+              expect(res.body[0].note_name).to.eql(expectedNote.note_name)
+              expect(res.body[0].note_content).to.eql(expectedNote.note_content)
+            })
+        })
+      })
     })
   
 
@@ -120,31 +120,31 @@ describe.only('Notes Endpoints', function() {
       })
 
     })
-    // context(`Given an XSS attack note`, () => {
-    //     const testFolders = makeFoldersArray();
-    //     const { maliciousNote, expectedNote } = makeMaliciousNote()
+    context(`Given an XSS attack note`, () => {
+        const testFolders = makeFoldersArray();
+        const { maliciousNote, expectedNote } = makeMaliciousNote()
   
-    //     beforeEach('insert malicious note', () => {
-    //       return db
-    //         .into('folder')
-    //         .insert(testFolders)
-    //         .then(() => {
-    //           return db
-    //             .into('note')
-    //             .insert([ maliciousNote ])
-    //         })  
-    //     })
+        beforeEach('insert malicious note', () => {
+          return db
+            .into('folder')
+            .insert(testFolders)
+            .then(() => {
+              return db
+                .into('note')
+                .insert([ maliciousNote ])
+            })  
+        })
   
-    //     it('removes XSS attack content', () => {
-    //       return supertest(app)
-    //         .get(`/api/notes/${maliciousNote.id}`)
-    //         .expect(200)
-    //         .expect(res => {
-    //           expect(res.body.note_name).to.eql(expectedNote.note_name)
-    //           expect(res.body.note_content).to.eql(expectedNote.note_content)
-    //         })
-    //     })
-    //   })
+        it('removes XSS attack content', () => {
+          return supertest(app)
+            .get(`/api/notes/${maliciousNote.id}`)
+            .expect(200)
+            .expect(res => {
+              expect(res.body.note_name).to.eql(expectedNote.note_name)
+              expect(res.body.note_content).to.eql(expectedNote.note_content)
+            })
+        })
+      })
     })
 
     describe.only(`POST /api/notes`, () => {
@@ -198,17 +198,17 @@ describe.only('Notes Endpoints', function() {
                         })
                 })
             })
-            // it('removes XSS attack content from response', () => {
-            //     const { maliciousNote, expectedNote } = makeMaliciousNote()
-            //     return supertest(app)
-            //       .post(`/api/notes`)
-            //       .send(maliciousNote)
-            //       .expect(201)
-            //       .expect(res => {
-            //         expect(res.body.note_name).to.eql(expectedNote.note_name)
-            //         expect(res.body.note_content).to.eql(expectedNote.note_content)
-            //       })
-            //   })
+            it('removes XSS attack content from response', () => {
+                const { maliciousNote, expectedNote } = makeMaliciousNote()
+                return supertest(app)
+                  .post(`/api/notes`)
+                  .send(maliciousNote)
+                  .expect(201)
+                  .expect(res => {
+                    expect(res.body.note_name).to.eql(expectedNote.note_name)
+                    expect(res.body.note_content).to.eql(expectedNote.note_content)
+                  })
+              })
             })
     describe.only(`DELETE /api/notes/:note_id`, () => {
         context(`Given no notes`, () => {

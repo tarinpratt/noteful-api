@@ -44,14 +44,14 @@ function makeMaliciousNote() {
     note_name: 'Naughty naughty very naughty <script>alert("xss");</script>',
     note_content: `Bad image <img src="https://url.to.file.which/does-not.exist" onerror="alert(document.cookie);">. But not <strong>all</strong> bad.`,
     date_modified: new Date().toISOString(),
-    folder_id: 911
+    folder_id: 1
 
   }
   const expectedNote = {
     ...maliciousNote,
     note_name: 'Naughty naughty very naughty &lt;script&gt;alert(\"xss\");&lt;/script&gt;',
     note_content: `Bad image <img src="https://url.to.file.which/does-not.exist">. But not <strong>all</strong> bad.`,
-    folder_id: 911
+    folder_id: 1
   }
   return {
     maliciousNote,

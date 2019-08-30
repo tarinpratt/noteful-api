@@ -28,8 +28,6 @@ notesRouter
     .post(jsonParser, (req, res, next) => {
         const { note_name, note_content, folder_id } = req.body
         const newNote = { note_name, note_content, folder_id }
-        console.log('new note', newNote)
-        //for (const [key, value] of Object.entries(newNote))
         if (note_name === undefined || note_content === undefined || folder_id === undefined) {
           return res.status(400).json({
             error: { message: `required field missing` }
